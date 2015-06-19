@@ -24,7 +24,7 @@ namespace CurrentAccountApplication
 
 
             Container = builder.Build();
-
+            
          
             Dispatch(args);
             Console.WriteLine(CurrentUser.Name);
@@ -35,13 +35,13 @@ namespace CurrentAccountApplication
         private static void Dispatch(string[] args)
         {
             using (var scope = Container.BeginLifetimeScope(cfg =>
-            {
+    {
                
                 cfg.RegisterInstance(CurrentUser);
                 cfg.RegisterInstance(CurrentAccount);
 
             }))
-            {
+        {
                 var dispatch = scope.Resolve<IDispatcher>();
                 var response = dispatch.Dispatch(args);
             }
