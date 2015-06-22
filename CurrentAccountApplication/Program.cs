@@ -9,20 +9,14 @@ namespace CurrentAccountApplication
     {
         private static IContainer Container { get; set; }
         private static IUser CurrentUser { get; set; }
-
+        private static IBankAccount CurrentAccount { get; set; }
         private static void Main(string[] args)
         {
             CurrentUser = new User();
+            CurrentAccount = new CurrentAccount();
             var builder = new ContainerBuilder();
-            ////builder.RegisterType<CurrentAccount>().As<IBankAccount>();
-            ////builder.RegisterType<User>().As<IUser>();
-
             builder.RegisterType<CurrentAccountDispatcher>()
                 .As<IDispatcher>();
-            builder.RegisterType<CreateUserCommandLine>();
-            //builder.RegisterInstance(CurrentUser)
-            //   .As<IUser>()
-            //   .SingleInstance();
             IModule module = new CurrentAccountModule();
 
             builder.RegisterModule(module);
@@ -44,6 +38,7 @@ namespace CurrentAccountApplication
             {
                
                 cfg.RegisterInstance(CurrentUser);
+                cfg.RegisterInstance(CurrentAccount);
 
             }))
             {

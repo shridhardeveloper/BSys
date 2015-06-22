@@ -9,9 +9,7 @@ namespace CurrentAccountApplication
 {
     internal class CurrentAccountDispatcher :IDispatcher
     {
-         readonly ILifetimeScope _scope;
-         
-
+        readonly ILifetimeScope _scope;
 
         public CurrentAccountDispatcher(ILifetimeScope scope)
         {
