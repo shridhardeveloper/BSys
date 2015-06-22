@@ -14,17 +14,18 @@ namespace CurrentAccountApplication
         {
             CurrentUser = new User();
             var builder = new ContainerBuilder();
-            builder.RegisterType<CurrentAccount>().As<IBankAccount>();
-            builder.RegisterType<User>().As<IUser>();
+            ////builder.RegisterType<CurrentAccount>().As<IBankAccount>();
+            ////builder.RegisterType<User>().As<IUser>();
 
             builder.RegisterType<CurrentAccountDispatcher>()
                 .As<IDispatcher>();
-            builder.RegisterInstance(CurrentUser)
-               .As<IUser>()
-               .SingleInstance();
+            builder.RegisterType<CreateUserCommandLine>();
+            //builder.RegisterInstance(CurrentUser)
+            //   .As<IUser>()
+            //   .SingleInstance();
             IModule module = new CurrentAccountModule();
-               
-                builder.RegisterModule(module);
+
+            builder.RegisterModule(module);
             
 
 
@@ -32,6 +33,7 @@ namespace CurrentAccountApplication
 
          
             Dispatch(args);
+            Console.WriteLine(CurrentUser.Name);
             Console.Read();
         }
 
@@ -40,14 +42,12 @@ namespace CurrentAccountApplication
         {
             using (var scope = Container.BeginLifetimeScope(cfg =>
             {
+               
                 cfg.RegisterInstance(CurrentUser);
 
             }))
             {
                 var dispatch = scope.Resolve<IDispatcher>();
-                
-                
-                
                 var response = dispatch.Dispatch(args);
             }
         }

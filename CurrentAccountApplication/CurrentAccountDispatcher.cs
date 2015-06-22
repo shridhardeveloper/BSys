@@ -16,16 +16,13 @@ namespace CurrentAccountApplication
         public CurrentAccountDispatcher(ILifetimeScope scope)
         {
             _scope = scope;
-            
         }
 
         public IEnumerable<ConsoleCommand> GetCommands()
         {
-            //return _scope.Resolve<IEnumerable<ConsoleCommand>>()
-            //    .OrderBy(c => c.Command);
-             return ConsoleCommandDispatcher.FindCommandsInSameAssemblyAs(typeof(Program));
+            return _scope.Resolve<IEnumerable<ConsoleCommand>>()
+                .OrderBy(c => c.Command);
         }
-        
 
         public object Dispatch(string[] args)
         {

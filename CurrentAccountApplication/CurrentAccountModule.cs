@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Banking;
 using CurrentAccountApplication;
-
+using ManyConsole;
 namespace CurrentAccountApplication
 {
 
@@ -11,7 +11,12 @@ namespace CurrentAccountApplication
         {
             builder.RegisterType<User>().As<IUser>();
             builder.RegisterType<CurrentAccount>().As<IBankAccount>();
+            builder.RegisterAssemblyTypes(typeof(CurrentAccount).Assembly)
+               .AssignableTo<ConsoleCommand>()
+               .As<ConsoleCommand>()
+               .AsSelf();
         }
+
     }
 
 }
