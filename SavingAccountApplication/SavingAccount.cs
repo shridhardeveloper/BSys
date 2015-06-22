@@ -12,6 +12,12 @@ namespace SavingAccountApplication
         public string AccountId { get; set; }
         public float Balance { get; set; }
         public DateTime CreationDate { get; set; }
+        public IUser _user;
+
+        public SavingAccount(IUser user)
+        {
+            _user = user;
+        }
 
         public void Debit(float amount)
         {
