@@ -11,12 +11,5 @@ namespace Banking
        void Credit(float amount);
        void CalculateInterest();
        void BalanceEnquiry();
-
-
-
-
-
-
-
     }
 }
