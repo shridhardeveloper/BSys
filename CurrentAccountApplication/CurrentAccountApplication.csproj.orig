@@ -52,9 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
- 
     <Compile Include="CreateAccountCommandLine.cs" />
- 
     <Compile Include="CreateUserCommandLine.cs" />
     <Compile Include="CurrentAccount.cs" />
     <Compile Include="CurrentAccountDispatcher.cs" />
