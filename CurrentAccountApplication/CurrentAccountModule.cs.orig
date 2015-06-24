@@ -1,0 +1,30 @@
+﻿using Autofac;
+using Banking;
+using CurrentAccountApplication;
+<<<<<<< HEAD
+using ManyConsole;
+=======
+
+>>>>>>> Added Distaptcher
+namespace CurrentAccountApplication
+{
+
+    public class CurrentAccountModule : Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterType<User>().As<IUser>();
+            builder.RegisterType<CurrentAccount>().As<IBankAccount>();
+<<<<<<< HEAD
+            builder.RegisterAssemblyTypes(typeof(CurrentAccount).Assembly)
+               .AssignableTo<ConsoleCommand>()
+               .As<ConsoleCommand>()
+               .AsSelf();
+        }
+
+=======
+        }
+>>>>>>> Added Distaptcher
+    }
+
+}

@@ -1,0 +1,50 @@
+﻿using System;
+using Autofac;
+using System.Collections.Generic;
+using ManyConsole;
+using Banking;
+using System.Linq;
+
+namespace CurrentAccountApplication
+{
+    internal class CurrentAccountDispatcher :IDispatcher
+    {
+<<<<<<< HEAD
+        readonly ILifetimeScope _scope;
+=======
+         readonly ILifetimeScope _scope;
+         
+
+>>>>>>> Added Distaptcher
+
+        public CurrentAccountDispatcher(ILifetimeScope scope)
+        {
+            _scope = scope;
+<<<<<<< HEAD
+=======
+            
+>>>>>>> Added Distaptcher
+        }
+
+        public IEnumerable<ConsoleCommand> GetCommands()
+        {
+<<<<<<< HEAD
+            return _scope.Resolve<IEnumerable<ConsoleCommand>>()
+                .OrderBy(c => c.Command);
+        }
+=======
+            //return _scope.Resolve<IEnumerable<ConsoleCommand>>()
+            //    .OrderBy(c => c.Command);
+             return ConsoleCommandDispatcher.FindCommandsInSameAssemblyAs(typeof(Program));
+        }
+        
+>>>>>>> Added Distaptcher
+
+        public object Dispatch(string[] args)
+        {
+
+           var response = ConsoleCommandDispatcher.DispatchCommand(GetCommands(), args, Console.Out);
+            return response;
+        }
+    }
+}
