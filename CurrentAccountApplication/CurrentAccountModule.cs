@@ -10,7 +10,7 @@ namespace CurrentAccountApplication
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<User>().As<IUser>();
-            builder.RegisterType<CurrentAccount>().As<IBankAccount>();
+       //     builder.RegisterType<CurrentAccount>().As<IBankAccount>();
             builder.RegisterAssemblyTypes(typeof(CurrentAccount).Assembly)
                .AssignableTo<ConsoleCommand>()
                .As<ConsoleCommand>()
