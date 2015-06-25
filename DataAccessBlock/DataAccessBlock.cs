@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,13 @@ namespace DataAccessBlock
 {
     public class AccountRepository : IAccountRepository
     {
+        private IDbConnection _db = null;
+
+        public AccountRepository(string connectionString)
+        {
+            _db = new SqlConnection(connectionString);
+        }
+
         public List<Banking.IBankAccount> GetAll()
         {
             throw new NotImplementedException();
@@ -36,6 +45,13 @@ namespace DataAccessBlock
 
     public class UserRepository : IUserRepository
     {
+        private IDbConnection _db = null;
+
+        public UserRepository(string connectionString)
+        {
+            _db = new SqlConnection(connectionString);
+        }
+
         public List<Banking.IUser> GetAll()
         {
             throw new NotImplementedException();
